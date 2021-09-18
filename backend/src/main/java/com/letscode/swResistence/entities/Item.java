@@ -2,13 +2,28 @@ package com.letscode.swResistence.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_item")
 public class Item implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String itemName;
 	private Long amount;
 	private Long score;
+	
+	@ManyToOne @JoinColumn(name = "inventory_id")
+	private Inventory inventory;
 	
 	public Item() {
 		
@@ -19,6 +34,14 @@ public class Item implements Serializable{
 		this.itemName = itemName;
 		this.amount = amount;
 		this.score = score;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 	public Long getId() {

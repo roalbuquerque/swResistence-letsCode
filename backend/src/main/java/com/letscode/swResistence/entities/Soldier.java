@@ -2,12 +2,16 @@ package com.letscode.swResistence.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +21,7 @@ public class Soldier implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	private String soldierName;
 	private Long age;
@@ -31,6 +36,10 @@ public class Soldier implements Serializable{
 	@ManyToOne @JoinColumn(name = "category_id")
 	private Category category;
 	
+	@OneToOne(mappedBy = "soldier", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Inventory inventory;
+    
 	public Soldier() {
 		
 	}
@@ -136,6 +145,14 @@ public class Soldier implements Serializable{
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 
 	@Override
