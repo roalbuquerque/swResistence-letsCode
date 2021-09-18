@@ -2,12 +2,15 @@ package com.letscode.swResistence.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -28,6 +31,9 @@ public class Category implements Serializable{
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant updatedAt;
 	
+	@OneToMany
+	private List<Soldier> soldiers = new ArrayList<>();
+	
 	public Category() {
 		
 	}
@@ -36,6 +42,10 @@ public class Category implements Serializable{
 		super();
 		this.id = id;
 		this.name = name;
+	}
+	
+	public List<Soldier> getSoldiers() {
+		return soldiers;
 	}
 
 	public Long getId() {
@@ -61,7 +71,7 @@ public class Category implements Serializable{
 	public Instant getUpdatedAt() {
 		return updatedAt;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

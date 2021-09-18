@@ -1,22 +1,12 @@
-package com.letscode.swResistence.entities;
+package com.letscode.swResistence.dto;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.letscode.swResistence.entities.Soldier;
 
-@Entity
-@Table(name = "tb_soldier")
-public class Soldier implements Serializable{
+public class SoldierDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String soldierName;
 	private Long age;
@@ -28,15 +18,15 @@ public class Soldier implements Serializable{
 	private String nameGalaxyBase;
 	private Long accusations;
 	
-	@ManyToOne @JoinColumn(name = "category_id")
-	private Category category;
+	private Long categoryId;
 	
-	public Soldier() {
+	public SoldierDTO() {
 		
 	}
-
-	public Soldier(Long id, String soldierName, Long age, String genre, Double previousLat, Double previousLng,
-			Double currentLat, Double currentLng, String nameGalaxyBase, Long accusations, Category category) {
+	
+	public SoldierDTO(Long id, String soldierName, Long age, String genre, Double previousLat, Double previousLng,
+			Double currentLat, Double currentLng, String nameGalaxyBase, Long accusations, Long categoryId) {
+		super();
 		this.id = id;
 		this.soldierName = soldierName;
 		this.age = age;
@@ -47,7 +37,23 @@ public class Soldier implements Serializable{
 		this.currentLng = currentLng;
 		this.nameGalaxyBase = nameGalaxyBase;
 		this.accusations = accusations;
-		this.category = category;
+		this.categoryId = categoryId;
+	}
+
+
+	public SoldierDTO(Soldier soldier, Long categoryId) {
+		super();
+		id = soldier.getId();
+		soldierName = soldier.getSoldierName();
+		age = soldier.getAge();
+		genre = soldier.getGenre();
+		previousLat = soldier.getPreviousLat();
+		previousLng = soldier.getPreviousLng();
+		currentLat = soldier.getCurrentLat();
+		currentLng = soldier.getCurrentLng();
+		nameGalaxyBase = soldier.getNameGalaxyBase();
+		accusations = soldier.getAccusations();
+		categoryId = soldier.getCategory().getId();
 	}
 
 	public Long getId() {
@@ -129,38 +135,13 @@ public class Soldier implements Serializable{
 	public void setAccusations(Long accusations) {
 		this.accusations = accusations;
 	}
-	
-	public Category getCategory() {
-		return category;
+
+	public Long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Soldier other = (Soldier) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
 }
