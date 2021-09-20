@@ -179,5 +179,15 @@ public class Soldier implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Soldier [id=" + id + ", soldierName=" + soldierName + ", age=" + age + ", genre=" + genre
+				+ ", previousLat=" + previousLat + ", previousLng=" + previousLng + ", currentLat=" + currentLat
+				+ ", currentLng=" + currentLng + ", nameGalaxyBase=" + nameGalaxyBase + ", accusations=" + accusations
+				+ ", category=" + category + ", inventory=" + inventory + "]";
+	}
+	
+	
 	
 }

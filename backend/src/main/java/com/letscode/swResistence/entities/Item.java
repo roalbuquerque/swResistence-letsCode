@@ -100,6 +100,12 @@ public class Item implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", itemName=" + itemName + ", amount=" + amount + ", score=" + score + ", inventory="
+				+ inventory + "]";
+	}
 	
 	
 }

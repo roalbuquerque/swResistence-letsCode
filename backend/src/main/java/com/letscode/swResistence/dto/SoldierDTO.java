@@ -53,7 +53,7 @@ public class SoldierDTO implements Serializable{
 		currentLng = soldier.getCurrentLng();
 		nameGalaxyBase = soldier.getNameGalaxyBase();
 		accusations = soldier.getAccusations();
-		categoryId = soldier.getCategory().getId();
+		this.categoryId = soldier.getCategory().getId();
 	}
 
 	public Long getId() {

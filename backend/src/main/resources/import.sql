@@ -47,7 +47,7 @@ INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Arma', 
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (3, 'Comida', 1, 1);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Água', 2, 2);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (5, 'Água', 2, 8);
-INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Comida', 1, 3);
+INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Arma', 4, 3);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Munição', 3, 9);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Água', 2, 1);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (3, 'Arma', 4, 4);
@@ -66,7 +66,7 @@ INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Água',
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Comida', 1, 7);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Munição', 3, 8);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Arma', 4, 7);
-INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (3, 'Água', 2, 3);
+INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Munição', 3, 3);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Arma', 4, 8);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (2, 'Munição', 3, 4);
 INSERT INTO tb_item (amount, item_name, score, inventory_id) VALUES (1, 'Água', 2, 5);

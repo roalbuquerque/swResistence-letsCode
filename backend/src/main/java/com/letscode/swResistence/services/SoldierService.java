@@ -40,6 +40,7 @@ public class SoldierService {
 	public SoldierDTO findById(Long id) {
 		Optional<Soldier> obj = repository.findById(id);
 		Soldier entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found")); 	
+		System.out.println(entity.getCategory().getId());
 		return new SoldierDTO(entity, entity.getCategory().getId());
 	}
 

@@ -27,7 +27,7 @@ public class ItemDTO implements Serializable{
 		this.inventoryId = inventoryId;
 	}
 
-	public ItemDTO(Item item, Long inventoryId) {
+	public ItemDTO(Item item) {
 		id = item.getId();
 		itemName = item.getItemName();
 		amount = item.getAmount();

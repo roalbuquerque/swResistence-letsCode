@@ -91,6 +91,13 @@ public class Inventory implements Serializable{
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Inventory [id=" + id + ", inventoryStatus=" + inventoryStatus + ", soldier=" + soldier + ", itens="
+				+ itens + "]";
+	}
+
+		
 	
 }
