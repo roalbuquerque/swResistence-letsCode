@@ -50,6 +50,8 @@ public class NegotiationResource {
 	private CategoryDTO categorySoldier2;
 	private Inventory inventoryTemp1;
 	private Inventory inventoryTemp2;
+	List<Item> itemSoldier1;
+	List<Item> itemSoldier2;
 	
 	@PostMapping
 	public SoldierDTO startNegociation(@RequestBody NegociationDTO negociationDTO) {
@@ -59,7 +61,7 @@ public class NegotiationResource {
 		categorySoldier1 = categoryService.findById(soldierDto1.getCategoryId());
 		Soldier soldier1 = new Soldier();
 		copyDtoToEntity(soldierDto1, soldier1);
-		List<Item> itemSoldier1 = negotiationService.findBySoldierId(soldier1);
+		itemSoldier1 = negotiationService.findBySoldierId(soldier1);
 
 		//Soldier 2
 		
@@ -67,61 +69,52 @@ public class NegotiationResource {
 		categorySoldier2 = categoryService.findById(soldierDto2.getCategoryId());
 		Soldier soldier2 = new Soldier();
 		copyDtoToEntity(soldierDto2, soldier2);
-		List<Item> itemSoldier2 = negotiationService.findBySoldierId(soldier2);
+		itemSoldier2 = negotiationService.findBySoldierId(soldier2);
 		
 		if(categorySoldier1.getName().equals("Aliado") && categorySoldier2.getName().equals("Aliado")) {
 			for (Item item : itemSoldier1) {
 				totalScoreSoldier1 = totalScoreSoldier1 + calcTotalScore(item.getAmount(), item.getScore());
-				CopyToNewInventory1(item);
+				inventoryTemp1 = new Inventory();
+				CopyToNewInventory(item, inventoryTemp1);
 			}
 			for (Item item : itemSoldier2) {
 				totalScoreSoldier2 = totalScoreSoldier2 + calcTotalScore(item.getAmount(), item.getScore());
-				CopyToNewInventory2(item);
+				inventoryTemp2 = new Inventory();
+				CopyToNewInventory(item, inventoryTemp2);
 			}
 			
 			if(totalScoreSoldier1 == totalScoreSoldier2){
 				
 				for (Item item : itemSoldier1) {
-					Long itemId = item.getId();
-					item.setId(null);
-					item.setInventory(null);
-					Item itemTemp = new Item();
-					copyItemTemp(item, itemTemp, inventoryTemp1);
-					itemservice.insert(item);
-					itemservice.delete(itemId);
+					performExchange(item, inventoryTemp2);
 				}
 				
 				for (Item item : itemSoldier2) {
-					Long itemId = item.getId();
-					item.setId(null);
-					Item itemTemp = new Item();
-					copyItemTemp(item, itemTemp, inventoryTemp2);
-					itemservice.insert(itemTemp);
-					itemservice.delete(itemId);
+					performExchange(item, inventoryTemp1);
 				}
 				System.out.println("Troca de item realizada com sucesso!");
 			}
 		}
-
 		return soldierDto1;
 	}
 
-	private void CopyToNewInventory1(Item item) {
-		inventoryTemp1 = new Inventory();
-		inventoryTemp1.setId(item.getInventory().getId());
-		inventoryTemp1.setInventoryStatus(item.getInventory().getInventoryStatus());
-		inventoryTemp1.setItens(item.getInventory().getItens());
+	private void performExchange(Item item, Inventory inventoryTemp) {
+		Long itemId = item.getId();
+		item.setId(null);
+		item.setInventory(null);
+		Item itemTemp = new Item();
+		copyItemTemp(item, itemTemp, inventoryTemp);
+		itemservice.insert(itemTemp);
+		itemservice.delete(itemId);
 	}
 
-	private void CopyToNewInventory2(Item item) {
-		inventoryTemp2 = new Inventory();
-		inventoryTemp2.setId(item.getInventory().getId());
-		inventoryTemp2.setInventoryStatus(item.getInventory().getInventoryStatus());
-		inventoryTemp2.setItens(item.getInventory().getItens());
+	private void CopyToNewInventory(Item item, Inventory inventoryTemp) {
+		inventoryTemp.setId(item.getInventory().getId());
+		inventoryTemp.setInventoryStatus(item.getInventory().getInventoryStatus());
+		inventoryTemp.setItens(item.getInventory().getItens());
 	}
-	
+
 	private void copyDtoToEntity(SoldierDTO dto, Soldier entity) {
-		
 		entity.setId(dto.getId());
 		entity.setSoldierName(dto.getSoldierName());
 		entity.setAge(dto.getAge());
@@ -137,11 +130,11 @@ public class NegotiationResource {
 	}
 	
 	private void copyItemTemp(Item item, Item itemTemp, Inventory inventory) {
-		
 		itemTemp.setAmount(item.getAmount());
 		itemTemp.setItemName(item.getItemName());
 		itemTemp.setScore(item.getScore());
-		itemTemp.setInventory(inventory);
+		Inventory inventoryEntity = inventoryRepository.findById(inventory.getId()).get();
+		itemTemp.setInventory(inventoryEntity);
 	}
 	
 	private Long calcTotalScore(Long quantidade, Long ponto) {

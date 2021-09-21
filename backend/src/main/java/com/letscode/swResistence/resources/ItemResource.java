@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.letscode.swResistence.dto.ItemDTO;
-import com.letscode.swResistence.dto.SoldierDTO;
 import com.letscode.swResistence.services.ItemService;
 
 @RestController
