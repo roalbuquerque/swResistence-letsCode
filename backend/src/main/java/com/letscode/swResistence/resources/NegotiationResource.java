@@ -124,7 +124,6 @@ public class NegotiationResource {
 		entity.setCurrentLat(dto.getCurrentLat());
 		entity.setCurrentLng(dto.getCurrentLng());
 		entity.setNameGalaxyBase(dto.getNameGalaxyBase());
-		entity.setAccusations(dto.getAccusations());
 		Category categoryEntity = categoryRepository.getOne(dto.getCategoryId());
 		entity.setCategory(categoryEntity);
 	}

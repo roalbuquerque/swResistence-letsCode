@@ -16,7 +16,7 @@ public class SoldierDTO implements Serializable{
 	private Double currentLat;
 	private Double currentLng;
 	private String nameGalaxyBase;
-	private Long accusations;
+//	private List<Accusation> accusations = new ArrayList<>();
 	
 	private Long categoryId;
 	
@@ -25,7 +25,7 @@ public class SoldierDTO implements Serializable{
 	}
 	
 	public SoldierDTO(Long id, String soldierName, Long age, String genre, Double previousLat, Double previousLng,
-			Double currentLat, Double currentLng, String nameGalaxyBase, Long accusations, Long categoryId) {
+			Double currentLat, Double currentLng, String nameGalaxyBase, Long categoryId) {
 		super();
 		this.id = id;
 		this.soldierName = soldierName;
@@ -35,8 +35,7 @@ public class SoldierDTO implements Serializable{
 		this.previousLng = previousLng;
 		this.currentLat = currentLat;
 		this.currentLng = currentLng;
-		this.nameGalaxyBase = nameGalaxyBase;
-		this.accusations = accusations;
+		this.nameGalaxyBase = nameGalaxyBase;		
 		this.categoryId = categoryId;
 	}
 
@@ -52,7 +51,7 @@ public class SoldierDTO implements Serializable{
 		currentLat = soldier.getCurrentLat();
 		currentLng = soldier.getCurrentLng();
 		nameGalaxyBase = soldier.getNameGalaxyBase();
-		accusations = soldier.getAccusations();
+//		accusations = soldier.getAccusations();
 		this.categoryId = soldier.getCategory().getId();
 	}
 
@@ -128,13 +127,9 @@ public class SoldierDTO implements Serializable{
 		this.nameGalaxyBase = nameGalaxyBase;
 	}
 
-	public Long getAccusations() {
-		return accusations;
-	}
-
-	public void setAccusations(Long accusations) {
-		this.accusations = accusations;
-	}
+//	public List<Accusation> getAccusations() {
+//		return accusations;
+//	}
 
 	public Long getCategoryId() {
 		return categoryId;

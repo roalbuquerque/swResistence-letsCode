@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.letscode.swResistence.dto.ItemDTO;
-import com.letscode.swResistence.entities.Inventory;
 import com.letscode.swResistence.entities.Item;
-import com.letscode.swResistence.repositories.InventoryRepository;
 import com.letscode.swResistence.repositories.ItemRepository;
 import com.letscode.swResistence.services.exceptions.DatabaseException;
 import com.letscode.swResistence.services.exceptions.ResourceNotFoundException;
@@ -24,9 +22,6 @@ public class ItemService {
 	
 	@Autowired
 	private ItemRepository itemRepository;
-	
-	@Autowired
-	private InventoryRepository inventoryRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<ItemDTO> findAllPaged(Pageable pageable) {

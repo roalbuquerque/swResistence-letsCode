@@ -1,6 +1,8 @@
 package com.letscode.swResistence.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -31,21 +34,23 @@ public class Soldier implements Serializable{
 	private Double currentLat;
 	private Double currentLng;
 	private String nameGalaxyBase;
-	private Long accusations;
-	
+		
 	@ManyToOne @JoinColumn(name = "category_id")
 	private Category category;
 	
 	@OneToOne(mappedBy = "soldier", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Inventory inventory;
+	
+	@OneToMany(mappedBy = "soldierAccuser")
+	private List<Accusation> accusations = new ArrayList<>();
     
 	public Soldier() {
 		
 	}
 
 	public Soldier(Long id, String soldierName, Long age, String genre, Double previousLat, Double previousLng,
-			Double currentLat, Double currentLng, String nameGalaxyBase, Long accusations, Category category) {
+			Double currentLat, Double currentLng, String nameGalaxyBase, Category category) {
 		this.id = id;
 		this.soldierName = soldierName;
 		this.age = age;
@@ -55,7 +60,6 @@ public class Soldier implements Serializable{
 		this.currentLat = currentLat;
 		this.currentLng = currentLng;
 		this.nameGalaxyBase = nameGalaxyBase;
-		this.accusations = accusations;
 		this.category = category;
 	}
 
@@ -131,14 +135,6 @@ public class Soldier implements Serializable{
 		this.nameGalaxyBase = nameGalaxyBase;
 	}
 
-	public Long getAccusations() {
-		return accusations;
-	}
-
-	public void setAccusations(Long accusations) {
-		this.accusations = accusations;
-	}
-	
 	public Category getCategory() {
 		return category;
 	}
@@ -153,6 +149,14 @@ public class Soldier implements Serializable{
 
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+	
+	public List<Accusation> getAccusations() {
+		return accusations;
+	}
+
+	public void setAccusations(List<Accusation> accusations) {
+		this.accusations = accusations;
 	}
 
 	@Override
@@ -184,9 +188,10 @@ public class Soldier implements Serializable{
 	public String toString() {
 		return "Soldier [id=" + id + ", soldierName=" + soldierName + ", age=" + age + ", genre=" + genre
 				+ ", previousLat=" + previousLat + ", previousLng=" + previousLng + ", currentLat=" + currentLat
-				+ ", currentLng=" + currentLng + ", nameGalaxyBase=" + nameGalaxyBase + ", accusations=" + accusations
-				+ ", category=" + category + ", inventory=" + inventory + "]";
+				+ ", currentLng=" + currentLng + ", nameGalaxyBase=" + nameGalaxyBase + ", category=" + category
+				+ ", inventory=" + inventory + ", accusations=" + accusations + "]";
 	}
+
 	
 	
 	

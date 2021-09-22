@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -59,15 +58,5 @@ public class SoldierResource {
 	public ResponseEntity<Void> delete(@PathVariable Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
-	}
-	
-	@RequestMapping(value = "/{id}/{id}", method = RequestMethod.GET)
-	public SoldierDTO startNegociation(@PathVariable Long soldier1, @PathVariable Long soldier2) {
-		System.out.println(soldier1);
-		System.out.println(soldier2);
-		SoldierDTO soldierDTO = new SoldierDTO();
-//		ItemDTO dto = service.findById(id);
-//		return ResponseEntity.ok().body(dto);
-		return soldierDTO;
 	}
 }
