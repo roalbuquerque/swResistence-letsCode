@@ -14,6 +14,8 @@ A aplicação consiste em uma apresentação de informações referente Soldados
 ![Padrão de Camadas](https://github.com/roalbuquerque/swResistence-letsCode/blob/master/padraoCamadas.png)
 
 ## Teste de requisição
+Importar o arquivo: "letsCode.postman_collection.json" no postman para testar as requisições.
+
 ![Teste de requisitção](https://github.com/roalbuquerque/swResistence-letsCode/blob/master/TestEndpoints1.png)
 ![Teste de requisitção](https://github.com/roalbuquerque/swResistence-letsCode/blob/master/TestEndpoints2.png)
 
