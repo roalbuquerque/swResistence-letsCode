@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "e984d304-3ea9-4340-8594-e598a02c9bbf",
+		"name": "letsCode",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Categories paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories?page=0&size=12&sort=name,asc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "12"
+								},
+								{
+									"key": "sort",
+									"value": "name,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Category by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Outro Soldado\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Nomade\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Inventory paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/inventories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"inventories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Inventory by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/inventories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"inventories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Soldier",
+			"item": [
+				{
+					"name": "Soldiers paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories?page=0&size=12&sort=name,asc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "12"
+								},
+								{
+									"key": "sort",
+									"value": "name,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soldiers by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Soldier",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"soldierName\": \"Outro Soldado\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"accusations\": 0,\r\n    \"categoryId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/soldiers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"soldiers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Soldier",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"soldierName\": \"Soldado universal\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"accusations\": 0,\r\n    \"categoryId\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/soldiers/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"soldiers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Soldier",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/soldiers/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"soldiers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reportTraitor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"soldierId1\": 1,\r\n    \"soldierId2\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/negotiation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"negotiation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ActionsNegociation",
+			"item": [
+				{
+					"name": "Start Negociation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"soldierId1\": 1,\r\n    \"soldierId2\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/negotiation",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"negotiation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Items paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/itens?page=0&size=12&sort=itemName,asc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"itens"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "12"
+								},
+								{
+									"key": "sort",
+									"value": "itemName,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Items by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/itens/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"itens",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
