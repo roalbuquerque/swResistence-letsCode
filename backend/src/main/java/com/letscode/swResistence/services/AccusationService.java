@@ -1,5 +1,6 @@
 package com.letscode.swResistence.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.letscode.swResistence.dto.AccusationDTO;
 import com.letscode.swResistence.entities.Accusation;
+import com.letscode.swResistence.entities.Soldier;
 import com.letscode.swResistence.repositories.AccusationRepository;
 import com.letscode.swResistence.services.exceptions.ResourceNotFoundException;
 
@@ -32,5 +34,11 @@ public class AccusationService {
 		Accusation entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found")); 	
 		return new AccusationDTO(entity);
 	}
+	
+	@Transactional(readOnly = true)
+    public List<Accusation> findAccusationsBySoldierAccusedId(Soldier soldier) {
+        
+        return accusationRepository.findAccusationsBySoldierAccusedId(soldier);
+    }
 	
 }

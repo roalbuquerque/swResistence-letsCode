@@ -8,37 +8,40 @@ public class AccusationDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private Long amountAccusations;
-	
+	private String descriptionAccusation;
 	private Long soldierId;
 	
 	public AccusationDTO() {
 		
 	}
 	
-	public AccusationDTO(Long id, Long amountAccusations, Long soldierId) {
+	public AccusationDTO(Long id, String descriptionAccusation, Long soldierId) {
 		super();
 		this.id = id;
-		this.amountAccusations = amountAccusations;
+		this.descriptionAccusation = descriptionAccusation;
 		this.soldierId = soldierId;
 	}
 
 	public AccusationDTO(Accusation accusation) {
 		id = accusation.getId();
-		amountAccusations = accusation.getAmountAccusations();
-		soldierId = accusation.getSoldierAccuser().getId();
+		descriptionAccusation = accusation.getDescriptionAccusation();
+		soldierId = accusation.getSoldier().getId();
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public Long getAmountAccusations() {
-		return amountAccusations;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getDescriptionAccusation() {
+		return descriptionAccusation;
 	}
 
-	public void setAmountAccusations(Long amountAccusations) {
-		this.amountAccusations = amountAccusations;
+	public void setDescriptionAccusation(String descriptionAccusation) {
+		this.descriptionAccusation = descriptionAccusation;
 	}
 
 	public Long getSoldierId() {
@@ -47,10 +50,6 @@ public class AccusationDTO implements Serializable{
 
 	public void setSoldierId(Long soldierId) {
 		this.soldierId = soldierId;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 }

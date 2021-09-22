@@ -18,19 +18,20 @@ public class Accusation implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long amountAccusations;
+	
+	private String descriptionAccusation;
 		
 	@ManyToOne @JoinColumn(name = "soldier_id")
-	private Soldier soldierAccuser;
+	private Soldier soldier;
 	
 	public Accusation() {
 		
 	}
 
-	public Accusation(Long id, Long amountAccusations) {
+	public Accusation(Long id, String descriptionAccusation) {
 		super();
 		this.id = id;
-		this.amountAccusations = amountAccusations;
+		this.descriptionAccusation = descriptionAccusation;
 	}
 
 	public Long getId() {
@@ -40,21 +41,21 @@ public class Accusation implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Long getAmountAccusations() {
-		return amountAccusations;
+	
+	public String getDescriptionAccusation() {
+		return descriptionAccusation;
 	}
 
-	public void setAmountAccusations(Long amountAccusations) {
-		this.amountAccusations = amountAccusations;
+	public void setDescriptionAccusation(String descriptionAccusation) {
+		this.descriptionAccusation = descriptionAccusation;
 	}
 
-	public Soldier getSoldierAccuser() {
-		return soldierAccuser;
+	public Soldier getSoldier() {
+		return soldier;
 	}
 
-	public void setSoldierAccuser(Soldier soldierAccuser) {
-		this.soldierAccuser = soldierAccuser;
+	public void setSoldier(Soldier soldier) {
+		this.soldier = soldier;
 	}
 
 	@Override
@@ -84,7 +85,8 @@ public class Accusation implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Accusation [id=" + id + ", amountAccusations=" + amountAccusations + ", soldierAccuser=" + soldierAccuser + "]";
+		return "Accusation [id=" + id + ", descriptionAccusation=" + descriptionAccusation + ", soldier="
+				+ soldier + "]";
 	}
 
 	

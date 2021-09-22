@@ -42,7 +42,7 @@ public class Soldier implements Serializable{
     @PrimaryKeyJoinColumn
     private Inventory inventory;
 	
-	@OneToMany(mappedBy = "soldierAccuser")
+	@OneToMany(mappedBy = "soldier")
 	private List<Accusation> accusations = new ArrayList<>();
     
 	public Soldier() {
