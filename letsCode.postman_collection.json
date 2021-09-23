@@ -353,6 +353,37 @@
 			]
 		},
 		{
+			"name": "ExecuteAccusation",
+			"item": [
+				{
+					"name": "Start Accusation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"soldierIndicatorId\": 1,\r\n    \"soldierAccusedId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/accusations",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"accusations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Item",
 			"item": [
 				{
@@ -388,6 +419,56 @@
 				},
 				{
 					"name": "Items by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/itens/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"itens",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Accusation",
+			"item": [
+				{
+					"name": "Accusation paged",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/accusations?page=0&size=12",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"accusations"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accusations by id",
 					"request": {
 						"method": "GET",
 						"header": [],
