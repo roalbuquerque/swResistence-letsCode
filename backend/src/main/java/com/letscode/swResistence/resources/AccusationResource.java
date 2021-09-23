@@ -19,7 +19,6 @@ import com.letscode.swResistence.dto.ExecuteAccusationDTO;
 import com.letscode.swResistence.dto.SoldierDTO;
 import com.letscode.swResistence.entities.Accusation;
 import com.letscode.swResistence.entities.Category;
-import com.letscode.swResistence.entities.Item;
 import com.letscode.swResistence.entities.Soldier;
 import com.letscode.swResistence.repositories.CategoryRepository;
 import com.letscode.swResistence.services.AccusationService;
@@ -45,7 +44,6 @@ public class AccusationResource {
 	private CategoryDTO categorySoldier1;
 	private CategoryDTO categorySoldier2;
 	List<Accusation> itemsSoldierAccused;
-	List<Item> itemSoldier2;
 	
 	@GetMapping
 	public ResponseEntity<Page<AccusationDTO>> findAll(Pageable pageable){
@@ -60,7 +58,9 @@ public class AccusationResource {
 	}
 	
 	@PostMapping
-	public SoldierDTO executeAccusation(@RequestBody ExecuteAccusationDTO executeAccusationDTO) {
+	public ResponseEntity<Void> executeAccusation(@RequestBody ExecuteAccusationDTO executeAccusationDTO) {
+		
+		Boolean alreadyAccusedThisSoldier = false;
 		
 		//soldierIndicator
 		SoldierDTO soldierDto1 = soldierService.findById(executeAccusationDTO.getSoldierIndicatorId());
@@ -70,19 +70,37 @@ public class AccusationResource {
 		SoldierDTO soldierDto2 = soldierService.findById(executeAccusationDTO.getSoldierAccusedId());
 		categorySoldier2 = categoryService.findById(soldierDto2.getCategoryId());
 		
+		//O Soldado esta acusando ele mesmo?
 		if(soldierDto1.getId() != soldierDto2.getId()){
 			if(categorySoldier1.getName().equals("Aliado") && categorySoldier2.getName().equals("Aliado")) {
 				Soldier soldier2 = new Soldier();
 				copyDtoToEntity(soldierDto2, soldier2);
 				itemsSoldierAccused = accusationService.findAccusationsBySoldierAccusedId(soldier2);
 				
+				for (Accusation accusation : itemsSoldierAccused) {
+					//O Soldado que esta para fazer a acusação já acusou este outro soldado?
+					if(soldierDto1.getId() == accusation.getSoldierIndicator().getId()){
+						alreadyAccusedThisSoldier = true;
+					}
+				}
+				if(!alreadyAccusedThisSoldier || itemsSoldierAccused.isEmpty()){
+					AccusationDTO accusationDTO = new AccusationDTO();
+					copyToAccusationDTO(soldierDto1, soldierDto2, accusationDTO);
+					accusationService.insertAccusation(accusationDTO);
+				}
 				
-				System.out.println("teste");
-				
+				System.out.println("Acusação realizada com sucesso!");
 			}
 			
 		}
-		return soldierDto1;
+		return ResponseEntity.noContent().build();
+		
+	}
+
+	private void copyToAccusationDTO(SoldierDTO soldierDto1, SoldierDTO soldierDto2, AccusationDTO accusationDTO) {
+		accusationDTO.setDescriptionAccusation("Não apresentou a identificação quando solicitado.");
+		accusationDTO.setSoldierId(soldierDto2.getId());
+		accusationDTO.setSoldierIndicatorId(soldierDto1.getId());
 	}
 	
 	private void copyDtoToEntity(SoldierDTO dto, Soldier entity) {

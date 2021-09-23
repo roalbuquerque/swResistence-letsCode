@@ -16,7 +16,6 @@ public class SoldierDTO implements Serializable{
 	private Double currentLat;
 	private Double currentLng;
 	private String nameGalaxyBase;
-//	private List<Accusation> accusations = new ArrayList<>();
 	
 	private Long categoryId;
 	
@@ -51,7 +50,6 @@ public class SoldierDTO implements Serializable{
 		currentLat = soldier.getCurrentLat();
 		currentLng = soldier.getCurrentLng();
 		nameGalaxyBase = soldier.getNameGalaxyBase();
-//		accusations = soldier.getAccusations();
 		this.categoryId = soldier.getCategory().getId();
 	}
 
@@ -126,10 +124,6 @@ public class SoldierDTO implements Serializable{
 	public void setNameGalaxyBase(String nameGalaxyBase) {
 		this.nameGalaxyBase = nameGalaxyBase;
 	}
-
-//	public List<Accusation> getAccusations() {
-//		return accusations;
-//	}
 
 	public Long getCategoryId() {
 		return categoryId;

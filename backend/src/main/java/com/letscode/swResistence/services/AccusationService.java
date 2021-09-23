@@ -13,6 +13,7 @@ import com.letscode.swResistence.dto.AccusationDTO;
 import com.letscode.swResistence.entities.Accusation;
 import com.letscode.swResistence.entities.Soldier;
 import com.letscode.swResistence.repositories.AccusationRepository;
+import com.letscode.swResistence.repositories.SoldierRepository;
 import com.letscode.swResistence.services.exceptions.ResourceNotFoundException;
 
 
@@ -21,6 +22,9 @@ public class AccusationService {
 	
 	@Autowired
 	private AccusationRepository accusationRepository;
+	
+	@Autowired
+	private SoldierRepository soldierRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<AccusationDTO> findAllPaged(Pageable pageable) {
@@ -40,5 +44,17 @@ public class AccusationService {
         
         return accusationRepository.findAccusationsBySoldierAccusedId(soldier);
     }
+	
+	@Transactional
+	public AccusationDTO insertAccusation(AccusationDTO dto) {
+		Accusation entity = new Accusation();
+		entity.setDescriptionAccusation(dto.getDescriptionAccusation());
+		Soldier soldierEntity = soldierRepository.findById(dto.getSoldierId()).get();
+		entity.setSoldier(soldierEntity);
+		Soldier soldierIndicatorEntity = soldierRepository.findById(dto.getSoldierIndicatorId()).get();
+		entity.setSoldierIndicator(soldierIndicatorEntity);
+		entity = accusationRepository.save(entity);
+		return new AccusationDTO(entity);
+	}
 	
 }

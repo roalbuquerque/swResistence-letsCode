@@ -22,8 +22,8 @@ INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Cu
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Obi-Wan Kenobi', 5, 'Humano', -8.7993, 63.7865, 171.0671, -46.8745, 'Estação Echo 5-7', 1);
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Anakin Skywalker', 90, 'Humano', -3.0067, -12.9370, 20.5724, 36.7864, 'Base Corvo', 1);
 
-INSERT INTO tb_accusation (description_accusation, soldier_id) VALUES ('Com armas escondidas no armário', 1);
-INSERT INTO tb_accusation (description_accusation, soldier_id) VALUES ('Com armas escondidas no armário', 3);
+INSERT INTO tb_accusation (description_accusation, soldier_id, soldier_Indicator_id) VALUES ('Com armas escondidas no armário', 1, 5);
+INSERT INTO tb_accusation (description_accusation, soldier_id, soldier_Indicator_id) VALUES ('Com armas escondidas no armário', 3, 4);
 
 INSERT INTO tb_inventory (soldier_id, inventory_status) VALUES (1, 'ATIVO');
 INSERT INTO tb_inventory (soldier_id, inventory_status) VALUES (2, 'ATIVO');

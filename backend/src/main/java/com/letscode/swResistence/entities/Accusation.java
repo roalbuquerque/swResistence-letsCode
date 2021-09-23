@@ -24,6 +24,9 @@ public class Accusation implements Serializable{
 	@ManyToOne @JoinColumn(name = "soldier_id")
 	private Soldier soldier;
 	
+	@ManyToOne @JoinColumn(name = "soldier_Indicator_id")
+	private Soldier soldierIndicator;
+	
 	public Accusation() {
 		
 	}
@@ -57,6 +60,14 @@ public class Accusation implements Serializable{
 	public void setSoldier(Soldier soldier) {
 		this.soldier = soldier;
 	}
+	
+	public Soldier getSoldierIndicator() {
+		return soldierIndicator;
+	}
+
+	public void setSoldierIndicator(Soldier soldierIndicator) {
+		this.soldierIndicator = soldierIndicator;
+	}
 
 	@Override
 	public int hashCode() {
@@ -85,9 +96,8 @@ public class Accusation implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Accusation [id=" + id + ", descriptionAccusation=" + descriptionAccusation + ", soldier="
-				+ soldier + "]";
+		return "Accusation [id=" + id + ", descriptionAccusation=" + descriptionAccusation + ", soldier=" + soldier
+				+ ", soldierIndicator=" + soldierIndicator + "]";
 	}
-
 	
 }

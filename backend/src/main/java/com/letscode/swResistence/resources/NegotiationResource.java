@@ -3,6 +3,7 @@ package com.letscode.swResistence.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,7 +55,7 @@ public class NegotiationResource {
 	List<Item> itemSoldier2;
 	
 	@PostMapping
-	public SoldierDTO startNegociation(@RequestBody NegociationDTO negociationDTO) {
+	public ResponseEntity<Void> startNegociation(@RequestBody NegociationDTO negociationDTO) {
 		
 		//Soldier 1
 		SoldierDTO soldierDto1 = soldierService.findById(negociationDTO.getSoldierId1());
@@ -95,7 +96,7 @@ public class NegotiationResource {
 				System.out.println("Troca de item realizada com sucesso!");
 			}
 		}
-		return soldierDto1;
+		return ResponseEntity.noContent().build();
 	}
 
 	private void performExchange(Item item, Inventory inventoryTemp) {
