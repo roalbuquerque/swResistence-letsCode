@@ -90,7 +90,7 @@ public class AccusationResource {
 					accusationService.insertAccusation(accusationDTO);
 					itemsUpdatedSoldierAccused = accusationService.findAccusationsBySoldierAccusedId(soldier2);
 					
-					if(itemsUpdatedSoldierAccused.size() == 2){
+					if(itemsUpdatedSoldierAccused.size() == 3){
 						soldierDto2.setCategoryId(2L);
 						soldierService.update(soldierDto2.getId(), soldierDto2);
 						System.out.println("Este Soldado agora é um traidor!");
