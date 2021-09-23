@@ -44,6 +44,7 @@ public class AccusationResource {
 	private CategoryDTO categorySoldier1;
 	private CategoryDTO categorySoldier2;
 	List<Accusation> itemsSoldierAccused;
+	List<Accusation> itemsUpdatedSoldierAccused;
 	
 	@GetMapping
 	public ResponseEntity<Page<AccusationDTO>> findAll(Pageable pageable){
@@ -87,6 +88,13 @@ public class AccusationResource {
 					AccusationDTO accusationDTO = new AccusationDTO();
 					copyToAccusationDTO(soldierDto1, soldierDto2, accusationDTO);
 					accusationService.insertAccusation(accusationDTO);
+					itemsUpdatedSoldierAccused = accusationService.findAccusationsBySoldierAccusedId(soldier2);
+					
+					if(itemsUpdatedSoldierAccused.size() == 2){
+						soldierDto2.setCategoryId(2L);
+						soldierService.update(soldierDto2.getId(), soldierDto2);
+						System.out.println("Este Soldado agora é um traidor!");
+					}
 				}
 				
 				System.out.println("Acusação realizada com sucesso!");
