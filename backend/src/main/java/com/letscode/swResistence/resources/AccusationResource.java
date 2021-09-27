@@ -98,6 +98,8 @@ public class AccusationResource {
 				}
 				
 				System.out.println("Acusação realizada com sucesso!");
+			}else {
+				System.out.println("Não é possível realizar a acusação, porque você ou o acusado "+ soldierDto2.getSoldierName() +" é um traidor da resistência!" );
 			}
 			
 		}
