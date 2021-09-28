@@ -59,4 +59,5 @@ public class SoldierResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 }
