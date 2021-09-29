@@ -24,4 +24,6 @@ public class PercentageDTO implements Serializable{
 		this.percentage = percentage;
 	}
 	
+	
+
 }
