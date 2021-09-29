@@ -36,6 +36,7 @@ public class CalculatePercentageResource {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	/*Porcentagem de Traidores.*/	
 	@GetMapping("/percentage-traitors")
 	public ResponseEntity<PercentageDTO> getPercentageTraitors(Pageable pageable){
 		Page<SoldierDTO> list = service.findAllPaged(pageable);
@@ -55,6 +56,7 @@ public class CalculatePercentageResource {
 		return ResponseEntity.ok().body(percentageDTO);
 	}
 
+	/*Porcentagem de Aliados.*/	
 	@GetMapping("/percentage-allies")
 	public ResponseEntity<PercentageDTO> getPercentageAllies(Pageable pageable){
 		Page<SoldierDTO> list = service.findAllPaged(pageable);
@@ -74,6 +76,7 @@ public class CalculatePercentageResource {
 		return ResponseEntity.ok().body(percentageDTO);
 	}
 	
+	/*Quantidade média de cada tipo de recurso por rebelde (Ex: 2 armas por rebelde)*/
 	@GetMapping("/percentage-resource-type")
 	public ResponseEntity<PercentageByResourceTypeDTO> getQuantityAverageResourceType(Pageable pageable){
 		Page<SoldierDTO> list = service.findAllPaged(pageable);
@@ -128,6 +131,7 @@ public class CalculatePercentageResource {
 		return ResponseEntity.ok().body(percentageByResourceTypeDTO);
 	}
 
+	/*Pontos perdidos devido a traidores.*/	
 	@GetMapping("/points-lost-by-traitors")
 	public ResponseEntity<PointsLostSoldierTraitorDTO> getPointsLostByTraitors(Pageable pageable){
 		Page<SoldierDTO> list = service.findAllPaged(pageable);
