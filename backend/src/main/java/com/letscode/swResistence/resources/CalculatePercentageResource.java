@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.letscode.swResistence.dto.PercentageByResourceTypeDTO;
 import com.letscode.swResistence.dto.PercentageDTO;
+import com.letscode.swResistence.dto.PointsLostSoldierTraitorDTO;
 import com.letscode.swResistence.dto.SoldierDTO;
 import com.letscode.swResistence.entities.Category;
 import com.letscode.swResistence.entities.Item;
@@ -127,6 +128,35 @@ public class CalculatePercentageResource {
 		return ResponseEntity.ok().body(percentageByResourceTypeDTO);
 	}
 
+	@GetMapping("/points-lost-by-traitors")
+	public ResponseEntity<PointsLostSoldierTraitorDTO> getPointsLostByTraitors(Pageable pageable){
+		Page<SoldierDTO> list = service.findAllPaged(pageable);
+		int totalPointsTraitors = 0;
+		List<Item> itemSoldier;
+				
+		for (SoldierDTO soldierDTO : list) {
+			if(soldierDTO.getCategoryId() == 2) {
+				Soldier soldier1 = new Soldier();
+				copyDtoToEntity(soldierDTO, soldier1);
+				itemSoldier = negotiationService.findBySoldierId(soldier1);
+				for (Item item : itemSoldier) {
+					totalPointsTraitors = (int) (totalPointsTraitors + (item.getAmount() * item.getScore()));
+				}
+			}
+		}
+		
+		PointsLostSoldierTraitorDTO pointsLostSoldierTraitorDTO = new PointsLostSoldierTraitorDTO();
+		pointsLostSoldierTraitorDTO.setPointsLost(totalPointsTraitors);
+		
+		System.out.println("Pontos perdidos devido a traidores é de: " + totalPointsTraitors);
+		return ResponseEntity.ok().body(pointsLostSoldierTraitorDTO);
+		
+	}
+	
+	private Long calcTotalScore(Long quantidade, Long ponto) {
+		return quantidade * ponto;
+	}	
+	
 	private double averageCalc(int totalResource, int numberOfAllies) {
 		return BigDecimal.valueOf((double) totalResource / numberOfAllies).setScale(1, RoundingMode.HALF_UP).doubleValue();
 	}
