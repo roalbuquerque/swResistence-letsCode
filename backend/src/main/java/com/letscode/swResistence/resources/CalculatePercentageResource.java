@@ -14,12 +14,12 @@ import com.letscode.swResistence.services.SoldierService;
 
 @RestController
 @RequestMapping(value = "/porcentages")
-public class PercentageTraitorsResource {
+public class CalculatePercentageResource {
 
 	@Autowired
 	private SoldierService service;
 	
-	@GetMapping
+	@GetMapping("/percentage-traitors")
 	public ResponseEntity<PercentageDTO> getPercentageTraitors(Pageable pageable){
 		Page<SoldierDTO> list = service.findAllPaged(pageable);
 		double numberOfTraitors = 0;
@@ -29,9 +29,7 @@ public class PercentageTraitorsResource {
 				numberOfTraitors = numberOfTraitors + 1;
 			}
 		}
-		
-		int listSize = list.getSize();
-		int amountTraitors = (int) (((double) numberOfTraitors / listSize) * 100); 
+		int amountTraitors = percentageCalc(list, numberOfTraitors); 
 		
 		PercentageDTO percentageDTO = new PercentageDTO();
 		percentageDTO.setPercentage(amountTraitors);
@@ -39,6 +37,30 @@ public class PercentageTraitorsResource {
 		
 		return ResponseEntity.ok().body(percentageDTO);
 	}
+
+	@GetMapping("/percentage-allies")
+	public ResponseEntity<PercentageDTO> getPercentageAllies(Pageable pageable){
+		Page<SoldierDTO> list = service.findAllPaged(pageable);
+		double numberOfAllies = 0;
+		
+		for (SoldierDTO soldierDTO : list) {
+			if(soldierDTO.getCategoryId() == 1) {
+				numberOfAllies = numberOfAllies + 1;
+			}
+		}
+		int amountAllies = percentageCalc(list, numberOfAllies);
+		
+		PercentageDTO percentageDTO = new PercentageDTO();
+		percentageDTO.setPercentage(amountAllies);
+		System.out.println("A porcentagem de Aliados é de: "+ amountAllies +"%");
+		
+		return ResponseEntity.ok().body(percentageDTO);
+	}
 	
+	private int percentageCalc(Page<SoldierDTO> list, double numberOfTraitors) {
+		int listSize = list.getSize();
+		int amountTraitors = (int) (((double) numberOfTraitors / listSize) * 100);
+		return amountTraitors;
+	}
 	
 }
