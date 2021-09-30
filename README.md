@@ -8,6 +8,7 @@ O "Resistence-letsCode" é uma API REST construída durante um evento organizado
 A aplicação consiste em uma apresentação de informações referente Soldados, categorias, inventário e itens de inventário, de personagens do mundo Star Wars que são coletados pelo backend feito em Spring boot. 
 
 ## Modelo conceitual
+#### O modelo conceitual abaixo foi criado na ferramenta online https://moqups.com/
 ![Modelo Conceitual](https://github.com/roalbuquerque/swResistence-letsCode/blob/master/modelo.png)
 
 ## Padrão de camadas
