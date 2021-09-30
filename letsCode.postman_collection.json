@@ -14,26 +14,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/categories?page=0&size=12&sort=name,asc",
+							"raw": "{{host}}/categories",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"categories"
-							],
-							"query": [
-								{
-									"key": "page",
-									"value": "0"
-								},
-								{
-									"key": "size",
-									"value": "12"
-								},
-								{
-									"key": "sort",
-									"value": "name,asc"
-								}
 							]
 						}
 					},
@@ -45,13 +31,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/categories/1",
+							"raw": "{{host}}/categories/3",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -98,13 +84,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/categories/1",
+							"raw": "{{host}}/categories/3",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -116,13 +102,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/categories/1",
+							"raw": "{{host}}/categories/3",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"categories",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -175,16 +161,23 @@
 			"item": [
 				{
 					"name": "Soldiers paged",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "{{host}}/categories?page=0&size=12&sort=name,asc",
+							"raw": "{{host}}/soldiers?page=0&size=20&sort=id,asc",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"categories"
+								"soldiers"
 							],
 							"query": [
 								{
@@ -193,11 +186,11 @@
 								},
 								{
 									"key": "size",
-									"value": "12"
+									"value": "20"
 								},
 								{
 									"key": "sort",
-									"value": "name,asc"
+									"value": "id,asc"
 								}
 							]
 						}
@@ -210,13 +203,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/categories/1",
+							"raw": "{{host}}/soldiers/21",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"categories",
-								"1"
+								"soldiers",
+								"21"
 							]
 						}
 					},
@@ -229,7 +222,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n    \"soldierName\": \"Outro Soldado\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"accusations\": 0,\r\n    \"categoryId\": 1\r\n}\r\n",
+							"raw": " {\r\n    \"soldierName\": \"Outro Soldado\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"categoryId\": 2\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -255,7 +248,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"soldierName\": \"Soldado universal\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"accusations\": 0,\r\n    \"categoryId\": null\r\n}",
+							"raw": "{\r\n    \"id\": 21,\r\n    \"soldierName\": \"Soldado universal\",\r\n    \"age\": 90,\r\n    \"genre\": \"Humano\",\r\n    \"previousLat\": -3.0067,\r\n    \"previousLng\": -12.937,\r\n    \"currentLat\": 20.5724,\r\n    \"currentLng\": 36.7864,\r\n    \"nameGalaxyBase\": \"Base Corvo\",\r\n    \"categoryId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -263,13 +256,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/soldiers/1",
+							"raw": "{{host}}/soldiers/21",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"soldiers",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -281,13 +274,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/soldiers/1",
+							"raw": "{{host}}/soldiers/21",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"soldiers",
-								"1"
+								"21"
 							]
 						}
 					},
@@ -314,6 +307,106 @@
 							],
 							"path": [
 								"negotiation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PercentageTraitors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/porcentages/percentage-traitors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"porcentages",
+								"percentage-traitors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PercentageAllies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/porcentages/percentage-allies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"porcentages",
+								"percentage-allies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QuantityAverageResourceType",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/porcentages/percentage-resource-type",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"porcentages",
+								"percentage-resource-type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PointsLostByTraitors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/porcentages/points-lost-by-traitors",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"porcentages",
+								"points-lost-by-traitors"
 							]
 						}
 					},
@@ -362,7 +455,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\r\n{\r\n    \"soldierIndicatorId\": 1,\r\n    \"soldierAccusedId\": 1\r\n}\r\n",
+							"raw": "\r\n{\r\n    \"soldierIndicatorId\": 5,\r\n    \"soldierAccusedId\": 3\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -392,7 +485,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/itens?page=0&size=12&sort=itemName,asc",
+							"raw": "{{host}}/itens?page=0&size=12&sort=id,asc",
 							"host": [
 								"{{host}}"
 							],
@@ -410,7 +503,7 @@
 								},
 								{
 									"key": "sort",
-									"value": "itemName,asc"
+									"value": "id,asc"
 								}
 							]
 						}
@@ -473,13 +566,44 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/itens/1",
+							"raw": "{{host}}/accusations/1",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"itens",
+								"accusations",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateLocation",
+			"item": [
+				{
+					"name": "UpdateLocation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"id\": 4,\r\n    \"currentLat\": 75.7339,\r\n    \"currentLng\": 12.9847\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/location",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"location"
 							]
 						}
 					},
