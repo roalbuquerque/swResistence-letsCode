@@ -3,7 +3,7 @@
 
 # Sobre o projeto
 
-O "Resistence-letsCode" é uma API REST construída durante um final de semana em um evento organizado pela [Let's Code](https://letscode.com.br/ "Site da Let's Code").
+O "Resistence-letsCode" é uma API REST construída durante um evento organizado pela [Let's Code](https://letscode.com.br/ "Site da Let's Code").
 
 A aplicação consiste em uma apresentação de informações referente Soldados, categorias, inventário e itens de inventário, de personagens do mundo Star Wars que são coletados pelo backend feito em Spring boot. 
 
