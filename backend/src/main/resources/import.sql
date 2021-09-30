@@ -3,7 +3,7 @@ INSERT INTO tb_category (name, created_At) VALUES ('Traidor', NOW());
 
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Luke Skywalker', 40, 'Humano', -137.5292, 74.3499, 76.6174, 18.5075, 'Base Corvo', 1);
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Han Solo', 20, 'Humano', -16.7020, 88.9961, -7.7766, 28.2574, 'Base Echo', 2);
-INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Chirrut Îmwe', 50, 'Humano', 150.9252, 31.9221, -107.7683, -58.9927, 'Base Falcão', 2);
+INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Chirrut Îmwe', 50, 'Humano', 150.9252, 31.9221, -107.7683, -58.9927, 'Base Falcão', 1);
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Baze Malbus', 22, 'Humano', 11.6366, 52.6337, -64.0069, 76.6591, 'Centro Industrial de Durkteel', 1);
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Ruescott Melshi', 45, 'Humano', 56.8446, 47.0691, -105.4035, -51.1230, 'Estação Echo 3-T-8', 1);
 INSERT INTO tb_soldier (soldier_name, age, genre, previous_lat, previous_lng, Current_lat, Current_lng, name_galaxy_base, category_id) VALUES ('Paodok Draba Takat', 18, 'Drabatano', -46.5326, 38.3706, -62.5604, -67.6901, 'Estação Echo 5-7', 1);
